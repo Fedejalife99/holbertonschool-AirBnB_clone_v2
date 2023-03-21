@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """ Console Module """
+import re
 import cmd
 import sys
 from models.base_model import BaseModel
@@ -118,13 +119,26 @@ class HBNBCommand(cmd.Cmd):
         if not args:
             print("** class name missing **")
             return
-        elif args not in HBNBCommand.classes:
+        arguments = args.split() 
+        if arguments[0] not in HBNBCommand.classes:
             print("** class doesn't exist **")
             return
-        new_instance = HBNBCommand.classes[args]()
+        arguments = args.split() 
+        new_instance = HBNBCommand.classes[arguments[0]]()
         storage.save()
         print(new_instance.id)
         storage.save()
+        #el codigo quita las commillas dobles pero necesitamos sacarlas con una backslash y
+        # los guiones bajos por espacios.
+        for i in range(1, len(arguments)):
+            param = arguments[i].split('=')
+            param[1] = re.sub('["\']', '', param[1])
+            #if '_' in param[1]: #cambiar signos por 
+                #param[1] = re.sub('[]')
+            new_instance.__setattr__(param[0], param[1])
+            print(new_instance.param[0])
+
+        
 
     def help_create(self):
         """ Help information for the create method """
