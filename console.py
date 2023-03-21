@@ -137,7 +137,7 @@ class HBNBCommand(cmd.Cmd):
                 #param[1] = re.sub('[]')
             new_instance.__setattr__(param[0], param[1])
             print(new_instance.param[0])
-        
+    
 
     def help_create(self):
         """ Help information for the create method """
