@@ -132,11 +132,13 @@ class HBNBCommand(cmd.Cmd):
         # los guiones bajos por espacios.
         for i in range(1, len(arguments)):
             param = arguments[i].split('=')
-            Value = param[1].replace('"', '\\')
+            Value = param[1][1:-1].replace('"', '\\"')
             if '.' in Value and Value[0] is int:
                 float(Value)
             if Value.isdigit() is True:
                 int(Value)
+            if '_' in Value:
+                Value.replace('_', ' ')
             #if param[0] in list_of_attributes:
             #for a in range(len(list_of_attributes)):
             #if param[0] == list_of_attributes[a]
