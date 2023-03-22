@@ -137,8 +137,7 @@ class HBNBCommand(cmd.Cmd):
                 float(Value)
             if Value.isdigit() is True:
                 int(Value)
-            if '_' in Value:
-                Value.replace('_', ' ')
+            Value = Value.replace('_', ' ')
             #if param[0] in list_of_attributes:
             #for a in range(len(list_of_attributes)):
             #if param[0] == list_of_attributes[a]

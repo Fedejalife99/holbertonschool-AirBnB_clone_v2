@@ -5,5 +5,39 @@
         "updated_at": "2023-03-22T10:40:36.484874",
         "name": "hola\\\"asd",
         "__class__": "BaseModel"
+    },
+    "City.a2f39f50-34ac-4394-949b-9551a6d65bc4": {
+        "id": "a2f39f50-34ac-4394-949b-9551a6d65bc4",
+        "created_at": "2023-03-22T10:49:01.391574",
+        "updated_at": "2023-03-22T10:49:01.392121",
+        "name": "San_francisco_is_the_game",
+        "__class__": "City"
+    },
+    "City.68544efc-9b7d-4a4c-8b74-2a4cd54202dd": {
+        "id": "68544efc-9b7d-4a4c-8b74-2a4cd54202dd",
+        "created_at": "2023-03-22T10:50:41.619701",
+        "updated_at": "2023-03-22T10:50:41.620893",
+        "name": "san_hola",
+        "__class__": "City"
+    },
+    "City.5c727ea9-7e4f-4250-82c9-cc92db4b881f": {
+        "id": "5c727ea9-7e4f-4250-82c9-cc92db4b881f",
+        "created_at": "2023-03-22T10:52:49.927935",
+        "updated_at": "2023-03-22T10:52:49.927943",
+        "__class__": "City"
+    },
+    "City.498a7e17-219c-4046-b7ab-63f782b3e934": {
+        "id": "498a7e17-219c-4046-b7ab-63f782b3e934",
+        "created_at": "2023-03-22T10:53:22.414233",
+        "updated_at": "2023-03-22T10:53:22.414858",
+        "name": "hola_n",
+        "__class__": "City"
+    },
+    "City.4d2c7bb2-a40c-4ca5-a362-a6db13108f44": {
+        "id": "4d2c7bb2-a40c-4ca5-a362-a6db13108f44",
+        "created_at": "2023-03-22T10:54:25.234808",
+        "updated_at": "2023-03-22T10:54:25.236460",
+        "name": "hola n",
+        "__class__": "City"
     }
 }
