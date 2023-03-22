@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """ Console Module """
+from curses.ascii import isdigit
 import re
 import cmd
 import sys
@@ -115,28 +116,36 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, args):
-        """ Create an object of any class"""
+        """Create an object of any class"""
         if not args:
             print("** class name missing **")
             return
-        arguments = args.split() 
+        arguments = args.split()
         if arguments[0] not in HBNBCommand.classes:
             print("** class doesn't exist **")
             return
-        arguments = args.split() 
         new_instance = HBNBCommand.classes[arguments[0]]()
-        storage.save()
         print(new_instance.id)
         storage.save()
+        list_of_attributes = new_instance.__dict__
         #el codigo quita las commillas dobles pero necesitamos sacarlas con una backslash y
         # los guiones bajos por espacios.
+        print(list_of_attributes)
         for i in range(1, len(arguments)):
             param = arguments[i].split('=')
-            param[1] = re.sub('["\']', '', param[1])
-            #if '_' in param[1]: #cambiar signos por 
-                #param[1] = re.sub('[]')
-            new_instance.__setattr__(param[0], param[1])
-            print(new_instance.param[0])
+            Value = param[1].replace('"', '\\')
+            if '.' in Value and Value[0] is int:
+                float(Value)
+            if Value.isdigit() is True:
+                int(Value)
+            #if param[0] in list_of_attributes:
+            #for a in range(len(list_of_attributes)):
+            #if param[0] == list_of_attributes[a]
+            setattr(new_instance, param[0], Value)
+            print(new_instance.id)
+            #if '_' in param[1]: #cambiar signos por
+            #param[1] = re.sub('[]'
+            new_instance.save()
     
 
     def help_create(self):
