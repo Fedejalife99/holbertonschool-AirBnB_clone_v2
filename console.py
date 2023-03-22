@@ -132,7 +132,8 @@ class HBNBCommand(cmd.Cmd):
         # los guiones bajos por espacios.
         for i in range(1, len(arguments)):
             param = arguments[i].split('=')
-            Value = param[1][1:-1].replace('"', '\\"')
+            if type(Value) is str and Value is not None:
+                Value = param[1][1:-1].replace('"', '\\"')
             if '.' in Value and Value[0] is int:
                 float(Value)
             if Value.isdigit() is True:
@@ -342,5 +343,3 @@ class HBNBCommand(cmd.Cmd):
         print("Updates an object with new information")
         print("Usage: update <className> <id> <attName> <attVal>\n")
 
-if __name__ == "__main__":
-    HBNBCommand().cmdloop()
