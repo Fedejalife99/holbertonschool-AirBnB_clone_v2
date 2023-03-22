@@ -144,7 +144,7 @@ class HBNBCommand(cmd.Cmd):
             #if '_' in param[1]: #cambiar signos por
             #param[1] = re.sub('[]'
             new_instance.save()
-            return new_instance.id
+            storage.save()
     
 
     def help_create(self):
