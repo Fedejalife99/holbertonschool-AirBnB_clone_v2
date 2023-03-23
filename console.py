@@ -131,16 +131,15 @@ class HBNBCommand(cmd.Cmd):
         for i in range(1, len(arguments)):
             param = arguments[i].split('=')
             Value = param[1]
-            if type(Value) is str and Value is not None:
+            if Value.isdigit() == True:
+                int(Value)
+            if '.' in Value:
+                float(Value)
+            if type(Value) is str and Value is not None and not int and not float:
                 Value = param[1][1:-1].replace('"', '\\"')
             if '_' in Value:
                 Value = Value.replace('_', ' ')
-            #if param[0] in list_of_attributes:
-            #for a in range(len(list_of_attributes)):
-            #if param[0] == list_of_attributes[a]
             setattr(new_instance, param[0], Value)
-            #if '_' in param[1]: #cambiar signos por
-            #param[1] = re.sub('[]'
             new_instance.save()
             storage.save()
     
@@ -339,3 +338,5 @@ class HBNBCommand(cmd.Cmd):
         print("Updates an object with new information")
         print("Usage: update <className> <id> <attName> <attVal>\n")
 
+if __name__ == '__main__':
+    HBNBCommand().cmdloop()
