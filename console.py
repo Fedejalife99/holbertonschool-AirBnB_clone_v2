@@ -131,10 +131,6 @@ class HBNBCommand(cmd.Cmd):
         for i in range(1, len(arguments)):
             param = arguments[i].split('=')
             Value = param[1]
-            if Value.isdigit() == True:
-                int(Value)
-            if '.' in Value:
-                float(Value)
             if type(Value) is str and Value is not None and not int and not float:
                 Value = param[1][1:-1].replace('"', '\\"')
             if '_' in Value:
