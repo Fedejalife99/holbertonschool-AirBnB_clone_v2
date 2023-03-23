@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """ Console Module """
-from curses.ascii import isdigit
 import re
 import cmd
 import sys
@@ -134,11 +133,8 @@ class HBNBCommand(cmd.Cmd):
             param = arguments[i].split('=')
             if type(Value) is str and Value is not None:
                 Value = param[1][1:-1].replace('"', '\\"')
-            if '.' in Value and Value[0] is int:
-                float(Value)
-            if Value.isdigit() is True:
-                int(Value)
-            Value = Value.replace('_', ' ')
+            if '_' in Value:
+                Value = Value.replace('_', ' ')
             #if param[0] in list_of_attributes:
             #for a in range(len(list_of_attributes)):
             #if param[0] == list_of_attributes[a]
