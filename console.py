@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """ Console Module """
-import re
 import cmd
 import sys
 from models.base_model import BaseModel
@@ -131,6 +130,7 @@ class HBNBCommand(cmd.Cmd):
         # los guiones bajos por espacios.
         for i in range(1, len(arguments)):
             param = arguments[i].split('=')
+            Value = param[1]
             if type(Value) is str and Value is not None:
                 Value = param[1][1:-1].replace('"', '\\"')
             if '_' in Value:
