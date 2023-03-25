@@ -37,7 +37,7 @@ class DBStorage:
         """Return all objects of a class"""
         new_dict = {}
         if cls is not None:
-            query = self.__session.query(cls).all()
+            query = self.__session.query(cls)
         else:
             query = self.__session.query(State, City, User, Place, Review, Amenity).all()
 
@@ -62,5 +62,5 @@ class DBStorage:
     def reload(self):
         """Reload objects from the database"""
         Base.metadata.create_all(self.__engine)
-        self.__session = scoped_session(sessionmaker.configure(bind=self.__engine,
-                                                     expire_on_commit=False))()
+        session_make = sessionmaker(bind=self.__engine, expire_on_commit=False)
+        self.__session = scoped_session(session_make)
