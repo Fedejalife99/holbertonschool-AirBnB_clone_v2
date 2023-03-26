@@ -37,12 +37,15 @@ class DBStorage:
         """Return all objects of a class"""
         new_dict = {}
         if cls is not None:
-            query = self.__session.query(cls)
+           classes = [User, State, City, Amenity, Place, Review]
         else:
-            query = self.__session.query(State, City, User, Place, Review, Amenity).all()
+            classes = [cls] 
 
-        for values in query:
-            new_dict[values.id] = values
+        for cls in classes:
+            objects = self.__session.query(cls).all()
+            for obj in objects:
+                key = f"{obj.__class__.__name__}.{obj.id}"
+                new_dict[key] = obj
 
         return new_dict
 
@@ -63,4 +66,5 @@ class DBStorage:
         """Reload objects from the database"""
         Base.metadata.create_all(self.__engine)
         session_make = sessionmaker(bind=self.__engine, expire_on_commit=False)
-        self.__session = scoped_session(session_make)
+        Session = scoped_session(session_make)
+        self.__session = Session()
