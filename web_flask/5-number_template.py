@@ -26,7 +26,7 @@ def python(text):
     return "Python {}".format(text.replace("_", " "))
 
 
-@app.route('/number/<int:n>')
+@app.route('/number/<int:n>', strict_slashes=False)
 def number(n):
     return "number {}".format(n)
 
