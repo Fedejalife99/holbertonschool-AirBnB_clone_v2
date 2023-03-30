@@ -1,9 +1,7 @@
 #!/usr/bin/python3
 """New engine"""
-from os import getenv
 from sqlalchemy.orm import sessionmaker, scoped_session
 from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
 from models.state import State
 from models.city import City
 from models.user import User
@@ -37,11 +35,11 @@ class DBStorage:
     def all(self, cls=None):
         """Return all objects of a class"""
         new_dict = {}
-        
+
         if cls is not None:
-           classes = [User, State, City, Amenity, Place, Review]
+            classes = [User, State, City, Amenity, Place, Review]
         else:
-            classes = [cls] 
+            classes = [cls]
 
         for cls in classes:
             objects = self.__session.query(cls).all()
@@ -70,3 +68,7 @@ class DBStorage:
         session_make = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(session_make)
         self.__session = Session()
+
+    def close(self):
+        """method on the private session attribute (self.__session)"""
+        self.__session.close()
